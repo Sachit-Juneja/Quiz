@@ -1,0 +1,13 @@
+import java.util.*;
+class input{
+    public static char main()
+    {       
+        Scanner sc= new Scanner(System.in);//Takes input in from the user
+        System.out.println("Enter the correct option");
+        char x=sc.next().charAt(0);
+        if (x==65 || x==66 || x==67 || x==68)
+        x+=32;
+        return(x);
+    }
+}
+
