@@ -1,0 +1,417 @@
+import java.util.*;
+class quiz
+{
+    public static void main()
+    {
+        Scanner sc = new Scanner(System.in);
+        String[] questions = new String[20];//Declaring and initialising the questions
+        questions[0]="What is the colour of a banana";
+        questions[1]="What is the colour of an apple";
+        questions[2]="What is the colour of an orange";
+        questions[3]="What is the capital of India";
+        questions[4]="What is the capital of Germany";
+        questions[5]="What is the capital of USA";
+        questions[6]="What is the hottest continent on Earth?";
+        questions[7]="What is the hottest country on Earth?";
+        questions[8]="What is the largest continent on Earth?";
+        questions[9]="What is the largest country on Earth?";
+        questions[10]="What is the smallest country on Earth?";
+        questions[11]="What is the longest river on Earth?";
+        questions[12]="What is the tallest mountain on Earth?";
+        questions[13]="How many players are there in a rugby league team?";
+        questions[14]="Who is the President of the USA?";
+        questions[15]="What is the coldest continent on Earth?";
+        questions[16]="Who is the current PM of India?";
+        questions[17]="Who was the only British Prime Minister to be assassinated?";
+        questions[18]="Who was the first Indian President?";
+        questions[19]="Who was the first President of the USA?";
+
+        String[] options = new String[20];//Declaring and initialising the options
+        options[0]="a: Orange       b: Yellow       c: Black        d: Red";
+        options[1]="a: Orange       b: Yellow       c: Black        d: Red";
+        options[2]="a: Orange       b: Yellow       c: Black        d: Red";
+        options[3]="a: Bengal       b: New Delhi       c: Assam        d: Chandigarh";
+        options[4]="a: Berlin       b: New Delhi       c: Assam        d: Chandigarh";
+        options[5]="a: Berlin       b: Washington D.C       c: Assam        d: Chandigarh";
+        options[6]="a: Asia       b: Africa       c: Australia        d: South America";
+        options[7]="a: Djibouti       b: South Africa       c: Chile        d: Argentina";
+        options[8]="a: Asia       b: North America        c: South America        d: Europe";
+        options[9]="a: Russia       b: China       c: India        d: Canada";
+        options[10]="a: Vatican City       b: Peru       c: Egypt        d: Singapore"; 
+        options[11]="a: Amazon       b: Nile       c: Yangtze        d: Ganga"; 
+        options[12]="a: Mt. Everest       b: Mt. K2       c: Himalayas        d: Mt. Kilimanjaro"; 
+        options[13]="a: 15       b: 11       c: 12        d: 13 "; 
+        options[14]="a: Obama       b: Trump       c: Roosevelt        d: Sachit"; 
+        options[15]="a: North America       b: Europe       c: South America        d: Antarctica "; 
+        options[16]="a: Modi       b: Kejriwal       c: Rahul Gandhi        d: Obama"; 
+        options[17]="a: Spencer Perceval       b: Theresa May       c: Theodore Roosevolt        d: Winston Churchill";
+        options[18]="a: Rajendra Prasad       b: Jawaharlal Nehru       c: Mahatma Gandhi        d: Zakir Hussain"; 
+        options[19]="a: George Washington      b: Abraham Lincoln       c: Roosevolt        d: Thomas Jefferson"; 
+
+        char[] answers = new char[20];//Declaring and initialising the answers
+        answers[0]= 'b';
+        answers[1]= 'd';
+        answers[2]= 'a';
+        answers[3]= 'b';
+        answers[4]= 'a';
+        answers[5]= 'b';
+        answers[6]= 'b';
+        answers[7]= 'a';
+        answers[8]= 'a';
+        answers[9]= 'a';
+        answers[10]= 'a';
+        answers[11]= 'b';
+        answers[12]= 'a';
+        answers[13]= 'd';
+        answers[14]= 'b';
+        answers[15]= 'd';
+        answers[16]= 'a';
+        answers[17]= 'a';
+        answers[18]= 'a';
+        answers[19]= 'a';
+
+        String repeat="";
+
+
+        do{
+            System.out.println("You have 2 lifelines for this quiz");
+            System.out.println("1. Double chance: You are given another chance, in case the wrong choice is made.");
+            System.out.println("2. Probable answers: Two most probable options are displayed.");
+            System.out.println("To activate any of the above lifelines. Please enter 1 or 2 at any point of time in the quiz");
+
+            int counter=0;
+            int[] rnd= new int [5];
+            char x=' ';
+            boolean a1=false,a2=false;
+            String[] ques_rnd = new String[5];
+            String[] opt_rnd = new String[5];
+            char[] ans_rnd = new char[5];
+            for(int i=0;i<5;i++)
+            {
+                rnd=randomizer();
+                ques_rnd[i]=questions[rnd[i]];//Storing the Randomised questions in a seperate array
+                opt_rnd[i]=options[rnd[i]];//Storing the Randomised options in a seperate array
+                ans_rnd[i]=answers[rnd[i]];//Storing the Randomised answers in a seperate array
+            }
+            int typ=0;
+            for(int i=0;i<5;i++)
+            {
+                System.out.println(ques_rnd[i]);//Printing Q1
+                System.out.println(opt_rnd[i]);// Printing the options
+                x=input.main();//Taking in the user's answer
+
+                if(x==97 || x==98 || x==99 || x==100)
+                {
+                    if(x==ans_rnd[i])
+                    {
+                        System.out.println("You got the answer correct");
+                        counter=counter+4;
+                    }
+                    else if(x != ans_rnd[i])
+                    {
+                        System.out.println("You got the answer incorrect");
+                        System.out.println("The correct answer is:" + ans_rnd[i]);
+                        counter=counter-1;
+                    }
+                }
+                else if(x=='1')//If user wants lifeline 1
+                {
+                    if(a1==true)
+                    {
+                        System.out.println("You have already used this lifeline");
+                        System.out.println(ques_rnd[i]);
+                        System.out.println(opt_rnd[i]);
+                        x=input.main();
+                        if(x == 97 || x == 98 || x == 99 || x == 100)
+                        {
+                            if(x == ans_rnd[i])
+                            {
+                                System.out.println("You got the answer correct");
+                                counter=counter+4;
+                            }
+                            else if(x != ans_rnd[i])
+                            {
+                                System.out.println("You got the answer incorrect");
+                                System.out.println("The correct answer is:" + ans_rnd[i]);
+                                counter=counter-1;
+                            }
+                        }
+                        else if(x=='2')
+                        {
+                            System.out.println("You cannot use two lifelines in a row");
+                        }
+                        else
+                        {
+                            System.out.println("You have entered invalid input and therefore got it wrong");
+                            counter=counter-1;
+                        }
+                        continue;
+                    }
+                    else if(a2 == false) 
+                    {
+                        System.out.println("You have two chances for this question");
+                        x=input.main();
+                        if(x==ans_rnd[i])
+                        {
+                            System.out.println("You got the answer correct");
+                            counter=counter+4;
+                            a1=true;
+                        }
+                        else if (x != ans_rnd[i])
+                        {
+                            System.out.println("You got the answer incorrect");
+                            a1=true;
+                            System.out.println(ques_rnd[i]);
+                            System.out.println(opt_rnd[i]);
+                            x=input.main();
+
+                            if(x == 97 || x == 98 || x == 99 || x == 100)
+                            {
+                                if(x == ans_rnd[i])
+                                {
+                                    System.out.println("You got the answer correct");
+                                    counter=counter+4;
+                                }
+                                else if(x != ans_rnd[i])
+                                {
+                                    System.out.println("You got the answer incorrect");
+                                    System.out.println("The correct answer is:" + ans_rnd[i]);
+                                    counter=counter-1;
+                                }
+                            }
+                            else if(x=='2'||x == '1')
+                            {
+                                System.out.println("You cannot use two lifelines in a row");
+                            }
+                            else
+                            {
+                                System.out.println("You have entered invalid input and therefore got it wrong");
+                                counter=counter-1;
+                            }
+                        }
+                    }
+                }
+                else if(x=='2') //If user wants second lifeline
+                {
+                    if(a2==true)
+                    {
+                        System.out.println("You have already used this lifeline");
+                        System.out.println(ques_rnd[i]);
+                        System.out.println(opt_rnd[i]);
+                        x=input.main();
+                        if(x==97 || x==98 || x==99 || x==100)
+                        {
+                            if(x==ans_rnd[i])
+                            {
+                                System.out.println("You got the answer correct");
+                                counter=counter+4;
+                            }
+                            else if(x != ans_rnd[i])
+                            {
+                                System.out.println("You got the answer incorrect");
+                                System.out.println("The correct answer is:" + ans_rnd[i]);
+                                counter=counter-1;
+                            }
+                        }
+                        else if (x=='1')
+                        {
+                            System.out.println("You cannot use lifeline number 1 after lifeline number 2");
+                        }
+                        else
+                        {
+                            System.out.println("You have entered invalid input and therefore got it wrong");
+                            counter=counter-1;
+                        }
+                        continue;
+                    }
+                    System.out.println("The two most probable answers shall be displayed");
+                    System.out.println(ans_rnd[i]);
+                    typ=ans_rnd[i]+1;
+                    if(typ==101)
+                    {
+                        typ=97;
+                    }
+                    System.out.println((char)typ);
+                    x=input.main();
+                    if(x==ans_rnd[i])
+                    {
+                        System.out.println("You got the answer correct");
+                        counter=counter+4;
+                        a2=true;
+                    }
+                    else if (x != ans_rnd[i])
+                    {
+                        System.out.println("You got the answer incorrect");
+                        a2=true;
+                        counter=counter-1;
+                    }
+                }
+                else
+                {
+                    System.out.println("You have entered invalid input and therefore got it wrong");
+                    counter=counter-1;
+                }
+            }
+            System.out.println("Your total points were: " + counter);//Prints total Points
+            System.out.println("Would you like to take the quiz again?");
+            System.out.println("Please enter a yes or no");
+            repeat=sc.nextLine();
+        } while (repeat.toLowerCase().equals("yes"));
+    }
+
+    public static int[] randomizer(){
+        int x = 0;  //use this variable x as a changer.
+        //final values of x are stored in the random array
+        int[] random = new int[5];
+        random[0]=0;
+        random[1]=0;
+        random[2]=0;
+        random[3]=0;
+        random[4]=0;
+
+        for (int i = 1; i <= 5; i++){
+            if (i == 1){
+                x = rndm1();
+                random[0] = x; //Choses one qn from qns 1-4
+            } else if (i == 2){
+                x = rndm2();
+                random[1] = x; //Choses one qn from qns 5-8
+            } else if (i == 3){
+                x = rndm3();
+                random[2] = x; //Choses one qn from qns 9-12
+            } else if (i == 4){
+                x = rndm4();
+                random[3] = x; //Choses one qn from qns 12-16
+            } else if (i == 5){
+                x = rndm5();
+                random[4] = x; //Choses one qn from qns 17-20
+            }
+        }
+        
+        return random;
+
+    }
+
+
+    public static int rndm1(){ 
+        int x=0;
+        int retrn = 0;
+        double z = 20 * Math.random(); //0,2,4,6,8,10,12,14,16,18
+        x = (int)z;//Randomiser
+
+
+        if (x <= 4)
+            retrn = 0;
+        else if (x <= 10 && x > 4)
+            retrn = 1;
+        else if (x <= 16 && x > 10)
+            retrn = 2;
+        else if (x == 18)
+            retrn = 3;
+        else
+            retrn = 0;
+
+        return(retrn);
+    }
+
+    public static int rndm2(){ 
+        int x=0;
+        int retrn = 0;
+        double z = 20 * Math.random(); //0,2,4,6,8,10,12,14,16,18
+        x = (int)z;//Randomiser
+
+
+        if (x <= 4)
+            retrn = 4;
+        else if (x <= 10 && x > 4)
+            retrn = 5;
+        else if (x <= 16 && x > 10)
+            retrn = 6;
+        else if (x == 18)
+            retrn = 7;
+        else
+            retrn = 4;
+
+        return(retrn);
+    }
+
+    public static int rndm3(){ 
+        int x=0;
+        int retrn = 0;
+        double z = 20 * Math.random(); //0,2,4,6,8,10,12,14,16,18
+        x = (int)z;//Randomiser
+
+
+        if (x <= 4)
+            retrn = 8;
+        else if (x <= 10 && x > 4)
+            retrn = 9;
+        else if (x <= 16 && x > 10)
+            retrn = 10;
+        else if (x == 18)
+            retrn = 11;
+        else
+            retrn = 8;
+
+        return(retrn);
+    }
+
+    public static int rndm4(){ 
+        int x=0;
+        int retrn = 0;
+        double z = 20 * Math.random(); //0,2,4,6,8,10,12,14,16,18
+        x = (int)z;//Randomiser
+
+
+        if (x <= 4)
+            retrn = 12;
+        else if (x <= 10 && x > 4)
+            retrn = 13;
+        else if (x <= 16 && x > 10)
+            retrn = 14;
+        else if (x == 18)
+            retrn = 15;
+        else
+            retrn = 12;
+
+        return(retrn);
+    }
+
+    public static int rndm5(){ 
+        int x=0;
+        int retrn = 0;
+        double z = 20 * Math.random(); //0,2,4,6,8,10,12,14,16,18
+        x = (int)z;//Randomiser
+
+
+        if (x <= 4)
+            retrn = 16;
+        else if (x <= 10 && x > 4)
+            retrn = 17;
+        else if (x <= 16 && x > 10)
+            retrn = 18;
+        else if (x == 18)
+            retrn = 19;
+        else
+            retrn = 16;
+
+        return(retrn);
+    }
+}// end of class randomizer
+
+
+/**             NAME OF THE VARIABLE                    DATA TYPE                       PURPOSE
+
+questions                               String[]                        Stores all the 20 questions
+options                                 String[]                        Stores all the 20 options
+answers                                 char[]                          Stores all the 20 answers
+repeat                                  String                          Stores value of whether the user wants to play quiz again
+rnd                                     int                             Stores value of number that comes from the g class
+counter                                 int                             Stores the value of the score
+x                                       char                            Stores value of the answer
+a1                                      boolean                         Ensures that the user doesnt use lifeline one twice
+a2                                      boolean                         Ensures that the user doesnt use lifeline two twice
+ques_rnd                                String[]                        Stores all the random questions
+opt_rnd                                 String[]                        Stores all the random options
+ans_rnd                                 char[]                          Stores all the answers to the randomised questions 
+typ                                     int                             Helps in the functionality of Lifeline 2        */
